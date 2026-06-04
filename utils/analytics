@@ -1,0 +1,11 @@
+def total_steps(df):
+    return int(df["TotalSteps"].sum())
+
+def average_steps(df):
+    return int(df["TotalSteps"].mean())
+
+def total_calories(df):
+    return int(df["Calories"].sum())
+
+def average_calories(df):
+    return int(df["Calories"].mean())
