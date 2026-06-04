@@ -1,0 +1,29 @@
+import streamlit as st
+
+from utils.data_loader import load_activity
+
+df = load_activity()
+
+avg_steps = df["TotalSteps"].mean()
+
+st.title(
+    "🤖 AI Insights"
+)
+
+if avg_steps > 10000:
+
+    st.success(
+        "Excellent activity level."
+    )
+
+elif avg_steps > 7000:
+
+    st.warning(
+        "Moderately active."
+    )
+
+else:
+
+    st.error(
+        "Low activity level."
+    )
