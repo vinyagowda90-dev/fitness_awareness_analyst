@@ -1,0 +1,26 @@
+import plotly.express as px
+
+def steps_trend(df):
+
+    fig = px.line(
+        df,
+        x="ActivityDate",
+        y="TotalSteps",
+        markers=True,
+        title="Daily Steps Trend"
+    )
+
+    return fig
+
+
+def calories_vs_steps(df):
+
+    fig = px.scatter(
+        df,
+        x="TotalSteps",
+        y="Calories",
+        color="VeryActiveMinutes",
+        size="Calories"
+    )
+
+    return fig
