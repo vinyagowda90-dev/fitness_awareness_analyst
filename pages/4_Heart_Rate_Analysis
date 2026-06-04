@@ -1,0 +1,21 @@
+import streamlit as st
+import plotly.express as px
+
+from utils.data_loader import load_heart
+
+df = load_heart()
+
+st.title(
+    "❤️ Heart Rate Analysis"
+)
+
+fig = px.line(
+    df.head(1000),
+    x="Time",
+    y="Value"
+)
+
+st.plotly_chart(
+    fig,
+    use_container_width=True
+)
