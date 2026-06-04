@@ -1,0 +1,20 @@
+import pandas as pd
+import streamlit as st
+
+@st.cache_data
+def load_activity():
+    return pd.read_csv(
+        "data/raw/dailyActivity_merged.csv"
+    )
+
+@st.cache_data
+def load_sleep():
+    return pd.read_csv(
+        "data/raw/sleepDay_merged.csv"
+    )
+
+@st.cache_data
+def load_heart():
+    return pd.read_csv(
+        "data/raw/heartrate_seconds_merged.csv"
+    )
