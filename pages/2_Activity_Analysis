@@ -1,0 +1,26 @@
+import streamlit as st
+
+from utils.data_loader import load_activity
+from utils.charts import *
+
+df = load_activity()
+
+st.title(
+    "🏃 Activity Analysis"
+)
+
+df["ActivityDate"] = (
+    pd.to_datetime(
+        df["ActivityDate"]
+    )
+)
+
+st.plotly_chart(
+    steps_trend(df),
+    use_container_width=True
+)
+
+st.plotly_chart(
+    calories_vs_steps(df),
+    use_container_width=True
+)
