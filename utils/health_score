@@ -1,0 +1,21 @@
+def calculate_health_score(
+        steps,
+        sleep_hours,
+        active_minutes):
+
+    step_score = min(steps/10000,1)*40
+
+    sleep_score = min(
+        sleep_hours/8,1
+    )*30
+
+    active_score = min(
+        active_minutes/60,1
+    )*30
+
+    return round(
+        step_score +
+        sleep_score +
+        active_score,
+        2
+    )
