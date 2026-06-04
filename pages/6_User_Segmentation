@@ -1,0 +1,45 @@
+import streamlit as st
+import pandas as pd
+
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+
+from utils.data_loader import load_activity
+
+df = load_activity()
+
+cluster_df = df[
+    [
+        "TotalSteps",
+        "Calories"
+    ]
+]
+
+scaler = StandardScaler()
+
+scaled = scaler.fit_transform(
+    cluster_df
+)
+
+model = KMeans(
+    n_clusters=3,
+    random_state=42
+)
+
+df["Cluster"] = model.fit_predict(
+    scaled
+)
+
+st.title(
+    "📈 User Segmentation"
+)
+
+st.dataframe(
+    df[
+        [
+            "TotalSteps",
+            "Calories",
+            "Cluster"
+        ]
+    ].head()
+)
